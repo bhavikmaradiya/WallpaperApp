@@ -3,6 +3,7 @@ import 'package:wallpaperapp/Screens/MainPagerWidgets/Category.dart';
 import 'package:wallpaperapp/Screens/MainPagerWidgets/Home.dart';
 
 class BottomNavigationBarProvider extends ChangeNotifier {
+  
   int _currentPos = 0;
   List<Widget> screen = [Home(), Category()];
 
@@ -14,5 +15,5 @@ class BottomNavigationBarProvider extends ChangeNotifier {
     notifyListeners();
   }
   int get currentPos => this._currentPos;
-  Widget get currentWidget => this.screen[this._currentPos];
+ 
 }

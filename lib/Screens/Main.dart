@@ -10,19 +10,10 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> {
-  int selectedMenu = 0;
-  PageController pageController;
-
-  @override
-  void initState() {
-    // SystemChrome.setEnabledSystemUIOverlays([]);
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
-    pageController = new PageController();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     return ChangeNotifierProvider<BottomNavigationBarProvider>(
         create: (context) => BottomNavigationBarProvider(),
         child: Consumer<BottomNavigationBarProvider>(
@@ -54,7 +45,6 @@ class _MainState extends State<Main> {
                 children: model.screen,
                 physics: NeverScrollableScrollPhysics(),
                 controller: model.controller,
-               
               ),
             ),
           ),

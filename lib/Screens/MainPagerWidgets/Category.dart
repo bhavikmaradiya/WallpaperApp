@@ -12,15 +12,8 @@ class Category extends StatefulWidget {
 }
 
 class _CategoryState extends State<Category>
-    with AutomaticKeepAliveClientMixin {
+    {
 
-      @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
-  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -85,7 +78,5 @@ class _CategoryState extends State<Category>
     );
   }
 
-  @override
-  bool get wantKeepAlive => true;
 }
 

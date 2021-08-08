@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:wallpaperapp/widget/Components/SearchBar.dart';
 import 'package:wallpaperapp/widget/Components/Trending.dart';
 
@@ -10,14 +9,8 @@ class Home extends StatefulWidget {
   }
 }
 
-class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
+class _HomeState extends State<Home> {
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    //  SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
-  }
   @override
   Widget build(BuildContext context) {
     
@@ -61,6 +54,4 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     );
   }
 
-  @override
-  bool get wantKeepAlive => true;
 }
