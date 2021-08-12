@@ -8,6 +8,7 @@ class WallpaperItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: ValueKey(wallpaper.src.small),
       padding: EdgeInsets.symmetric(vertical: 5),
       margin: EdgeInsets.symmetric(horizontal: 3.5),
       child: Material(
@@ -33,6 +34,7 @@ class WallpaperItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   child: Image.network(
                     wallpaper.src.portrait,
+                    key: ValueKey(wallpaper.src.small),
                     height: 190,
                     width: 130,
                     fit: BoxFit.cover,

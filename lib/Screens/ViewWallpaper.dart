@@ -28,6 +28,7 @@ class _ViewWallpaperState extends State<ViewWallpaper> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        key: ValueKey(widget.wallpaper.src.small),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Stack(children: [

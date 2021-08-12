@@ -84,6 +84,7 @@ class _TrendingState extends State<Trending> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return Container(
+                      
                       width: 130,
                       height: 190,
                       margin: EdgeInsets.symmetric(horizontal: 3.5),
