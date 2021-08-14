@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -9,9 +8,9 @@ import 'package:wallpaperapp/model/view_categorynotifier.dart';
 import 'package:wallpaperapp/widget/Components/WallpaperItem.dart';
 
 class ViewCategory extends StatelessWidget {
-  String query;
-  ColorModel color;
-  ViewCategory({this.query, this.color});
+  final String query;
+  final ColorModel color;
+  const ViewCategory({this.query, this.color});
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -22,10 +21,10 @@ class ViewCategory extends StatelessWidget {
 }
 
 class Body extends StatefulWidget {
-  String query;
-  ColorModel color;
+  final String query;
+  final ColorModel color;
 
-  Body(this.query, this.color);
+  const Body(this.query, this.color);
 
   @override
   _BodyState createState() => _BodyState();

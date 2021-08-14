@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaperapp/widget/Components/SearchBar.dart';
-import 'package:wallpaperapp/widget/Components/Trending.dart';
+import 'package:wallpaperapp/widget/Components/HomeCategory.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -9,11 +9,11 @@ class Home extends StatefulWidget {
   }
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin{
 
+  
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       child: Column(
         children: [
@@ -46,7 +46,20 @@ class _HomeState extends State<Home> {
           Expanded(
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
-              child: Column(children: <Widget>[Trending()]),
+              child: Column(children: <Widget>[
+                HomeCategory("Popular"),
+                SizedBox(
+                  height: 13,
+                ),
+                HomeCategory("Adventures"),
+                SizedBox(
+                  height: 13,
+                ),
+                HomeCategory("Artistic"),
+                SizedBox(
+                  height: 15,
+                ),
+              ]),
             ),
           )
         ],
@@ -54,4 +67,6 @@ class _HomeState extends State<Home> {
     );
   }
 
+  @override
+  bool get wantKeepAlive => true;
 }

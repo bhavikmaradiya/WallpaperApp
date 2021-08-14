@@ -11,7 +11,7 @@ class Category extends StatefulWidget {
   _CategoryState createState() => _CategoryState();
 }
 
-class _CategoryState extends State<Category>
+class _CategoryState extends State<Category>with AutomaticKeepAliveClientMixin
     {
 
   @override
@@ -77,6 +77,9 @@ class _CategoryState extends State<Category>
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
 }
 

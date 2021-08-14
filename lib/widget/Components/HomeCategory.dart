@@ -4,20 +4,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shimmer/shimmer.dart';
+import 'package:wallpaperapp/Screens/ViewCategory.dart';
 import 'package:wallpaperapp/data/data.dart';
 import 'package:wallpaperapp/Screens/ViewTrending.dart';
 import 'package:wallpaperapp/model/wallpaper.dart';
 import 'WallpaperItem.dart';
 
-class Trending extends StatefulWidget {
+class HomeCategory extends StatefulWidget {
+  final String category;
+  const HomeCategory(this.category);
   @override
-  _TrendingState createState() {
-    return _TrendingState();
+  _HomeCategoryState createState() {
+    return _HomeCategoryState();
   }
 }
 
-class _TrendingState extends State<Trending> {
-  List<Wallpaper> wallpapers = new List();
+class _HomeCategoryState extends State<HomeCategory> {
+  List<Wallpaper> wallpapers = [];
 
   @override
   void initState() {
@@ -39,7 +42,7 @@ class _TrendingState extends State<Trending> {
                     Padding(
                         padding:
                             EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-                        child: Text("Popular",
+                        child: Text(widget.category,
                             textAlign: TextAlign.start,
                             style: TextStyle(
                                 color: Colors.black87,
@@ -54,7 +57,10 @@ class _TrendingState extends State<Trending> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ViewTrending()),
+                                  builder: (context) => widget.category ==
+                                          "Popular"
+                                      ? ViewTrending()
+                                      : ViewCategory(query: widget.category)),
                             );
                           },
                           child: Text("See all",
@@ -84,7 +90,6 @@ class _TrendingState extends State<Trending> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return Container(
-                      
                       width: 130,
                       height: 190,
                       margin: EdgeInsets.symmetric(horizontal: 3.5),
@@ -92,22 +97,27 @@ class _TrendingState extends State<Trending> {
                         baseColor: Colors.grey.shade200,
                         highlightColor: Colors.white,
                         child: Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.white,),
-                         
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     );
                   },
                 ));
         },
-        future: getInitialPhotos(),
+        future: getInitialPhotos(widget.category),
       ),
     );
   }
 
-  Future<List<Wallpaper>> getInitialPhotos() async {
+  Future<List<Wallpaper>> getInitialPhotos(String query) async {
     var res = await http.get(
-        Uri.parse("https://api.pexels.com/v1/curated?per_page=10"),
+        query != "Popular"
+            ? Uri.parse(
+                "https://api.pexels.com/v1/search?query=$query&per_page=10")
+            : Uri.parse("https://api.pexels.com/v1/curated?per_page=10"),
         headers: {"Authorization": API_KEY});
 
     Map<String, dynamic> jsonData = jsonDecode(res.body);
