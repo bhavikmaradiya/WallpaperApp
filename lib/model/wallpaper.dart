@@ -22,6 +22,9 @@ class Wallpaper {
     this.src,
     this.liked,
   });
+  
+  @override
+  bool operator ==(other) => other.id == id;
 
   factory Wallpaper.fromJson(Map<String, dynamic> json) => new Wallpaper(
     id: json["id"],

@@ -43,7 +43,8 @@ class ViewCategoryNotifier extends ChangeNotifier {
       wallpapers.removeAt(wallpapers.length - 1);
     }
     jsonData['photos'].forEach((item) {
-      wallpapers.add(Wallpaper.fromJson(item));
+      if (!wallpapers.contains(Wallpaper.fromJson(item)))
+        wallpapers.add(Wallpaper.fromJson(item));
     });
     pageCount++;
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);

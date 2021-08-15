@@ -22,7 +22,6 @@ class _ViewTrendingState extends State<ViewTrending> {
 
   @override
   void initState() {
-    
     getInitialPhotos(pageCount);
     _controller.addListener(() {
       if (_controller.position.pixels == _controller.position.maxScrollExtent) {
@@ -30,13 +29,12 @@ class _ViewTrendingState extends State<ViewTrending> {
         print("end");
       }
     });
-    
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    
     return Material(
       child: Scaffold(
         extendBodyBehindAppBar: true,
@@ -141,7 +139,9 @@ class _ViewTrendingState extends State<ViewTrending> {
   }
 
   void getInitialPhotos(int page) async {
-    if (page > 1 && wallpapers.isNotEmpty && wallpapers[wallpapers.length - 1].id != null) {
+    if (page > 1 &&
+        wallpapers.isNotEmpty &&
+        wallpapers[wallpapers.length - 1].id != null) {
       wallpapers.add(Wallpaper(id: null));
       setState(() {});
     }
@@ -157,7 +157,8 @@ class _ViewTrendingState extends State<ViewTrending> {
       wallpapers.removeAt(wallpapers.length - 1);
     }
     jsonData['photos'].forEach((item) {
-      wallpapers.add(Wallpaper.fromJson(item));
+      if (!wallpapers.contains(Wallpaper.fromJson(item)))
+        wallpapers.add(Wallpaper.fromJson(item));
     });
     pageCount++;
     print(jsonData['photos']);
