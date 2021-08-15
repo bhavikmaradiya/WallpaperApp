@@ -10,12 +10,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "WallpaperApp",
-      theme: ThemeData(fontFamily: 'Rubik'),
-      debugShowCheckedModeBanner: false,
-      home: Main());
+        title: "WallpaperApp",
+        theme: ThemeData(fontFamily: 'Rubik'),
+        debugShowCheckedModeBanner: false,
+        home: Main());
   }
-
 }
-
-
