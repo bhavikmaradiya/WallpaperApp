@@ -27,90 +27,93 @@ class _ViewWallpaperState extends State<ViewWallpaper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        key: ValueKey(widget.wallpaper.src.small),
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Stack(children: [
-          Positioned.fill(
-              child: Hero(
-            tag: widget.wallpaper.src.portrait,
-            child: InteractiveViewer(
-              child: Image.network(
-                widget.wallpaper.src.portrait,
-                fit: BoxFit.cover,
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-              ),
-            ),
-          )),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            alignment: Alignment.bottomCenter,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                InkWell(
-                  onTap: () {
-                    _save();
-                  },
-                  child: Stack(
-                    children: [
-                      Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                          width: MediaQuery.of(context).size.width / 2,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: Color(0xff1C1B1B).withOpacity(0.8)),
-                          child: Column(children: [
-                            Text("Download",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.transparent,
-                                    fontWeight: FontWeight.w600)),
-                            Text('wallpaper will be saved',
-                                style: TextStyle(
-                                  color: Colors.transparent,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 11,
-                                ))
-                          ])),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(color: Colors.white54, width: 1),
-                          gradient: LinearGradient(
-                              colors: [Color(0x36FFFFFF), Color(0x0FFFFFFF)]),
-                        ),
-                        child: Column(children: [
-                          Text("Download",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600)),
-                          Text('wallpaper will be saved',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 11,
-                              ))
-                        ]),
-                      ),
-                    ],
+      body: Hero(
+         tag: widget.wallpaper.src.portrait,
+        child: Container(
+          key: ValueKey(widget.wallpaper.src.small),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Stack(children: [
+            Positioned.fill(
+                child: InteractiveViewer(
+                  child: Image.network(
+                    widget.wallpaper.src.portrait,
+                    fit: BoxFit.cover,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
                   ),
-                ),
-                SizedBox(
-                  height: 50,
-                )
-              ],
-            ),
-          )
-        ]),
+                )),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              alignment: Alignment.bottomCenter,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: () {
+                        _save();
+                      },
+                      child: Stack(
+                        children: [
+                          Container(
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                              width: MediaQuery.of(context).size.width / 2,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: Color(0xff1C1B1B).withOpacity(0.8)),
+                              child: Column(children: [
+                                Text("Download",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.transparent,
+                                        fontWeight: FontWeight.w600)),
+                                Text('wallpaper will be saved',
+                                    style: TextStyle(
+                                      color: Colors.transparent,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 11,
+                                    ))
+                              ])),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 2,
+                            padding:
+                                EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(color: Colors.white54, width: 1),
+                              gradient: LinearGradient(
+                                  colors: [Color(0x36FFFFFF), Color(0x0FFFFFFF)]),
+                            ),
+                            child: Column(children: [
+                              Text("Download",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600)),
+                              Text('wallpaper will be saved',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 11,
+                                  ))
+                            ]),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50,
+                  )
+                ],
+              ),
+            )
+          ]),
+        ),
       ),
     );
   }

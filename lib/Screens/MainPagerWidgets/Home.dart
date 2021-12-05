@@ -51,11 +51,19 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin{
                 SizedBox(
                   height: 13,
                 ),
-                HomeCategory("Adventures"),
+                HomeCategory("Love"),
                 SizedBox(
                   height: 13,
                 ),
                 HomeCategory("Artistic"),
+                SizedBox(
+                  height: 13,
+                ),
+                HomeCategory("Adventures"),
+                SizedBox(
+                  height: 13,
+                ),
+                HomeCategory("Backgrounds"),
                 SizedBox(
                   height: 15,
                 ),

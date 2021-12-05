@@ -60,14 +60,8 @@ class _ViewTrendingState extends State<ViewTrending> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 7, left: 3),
-                      child: Text(
-                        (() {
-                          if (wallpapers.length > 0) {
-                            return "${wallpapers.length}+ wallpapers available";
-                          }
-                          return "";
-                        })(),
+                      padding: EdgeInsets.only(top: 5, left: 3),
+                      child: Text("wallpapers are provided by Pexels",
                         style: TextStyle(
                           color: Colors.black,
                           wordSpacing: 0.50,

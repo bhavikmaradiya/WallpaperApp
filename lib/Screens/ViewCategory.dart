@@ -33,7 +33,6 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   @override
   void initState() {
-   
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       var notifier = Provider.of<ViewCategoryNotifier>(context, listen: false);
       notifier.getInitialPhotos(widget.query, widget.color);
@@ -77,20 +76,9 @@ class _BodyState extends State<Body> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 7, left: 3),
+                        padding: EdgeInsets.only(top: 5, left: 3),
                         child: Text(
-                          (() {
-                            if (state.wallpapers.length > 0) {
-                              return state
-                                          .wallpapers[
-                                              state.wallpapers.length - 1]
-                                          .id ==
-                                      null
-                                  ? "${state.wallpapers.length - 1}+ wallpapers available"
-                                  : "${state.wallpapers.length}+ wallpapers available";
-                            }
-                            return "";
-                          })(),
+                          "wallpapers are provided by Pexels",
                           style: TextStyle(
                             color: Colors.black,
                             wordSpacing: 0.50,
